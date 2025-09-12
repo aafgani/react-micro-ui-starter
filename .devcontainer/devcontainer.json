@@ -1,18 +1,37 @@
 {
   "name": "React + Vite + TypeScript",
+
+  // Build using Dockerfile in this folder
   "build": {
     "dockerfile": "Dockerfile"
   },
+  // Forward dev server port (Vite uses 5173 by default)
   "forwardPorts": [5173],
+
+  // Mount local SSH config into container (so Git works inside container)
   "mounts": ["source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind"],
+
+  // Force Git inside container to use host SSH config
   "remoteEnv": {
     "GIT_SSH_COMMAND": "ssh -F /home/node/.ssh/config"
   },
+  // Run container as "node" user instead of root
   "remoteUser": "node",
+
+  // Run automatically after container starts
+  // (⚠️ Will fail first time until you generate Vite project with `npm create vite@latest`)
   "postCreateCommand": "npm install",
+
+  // VS Code extensions installed automatically inside container
   "customizations": {
     "vscode": {
-      "extensions": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+      "extensions": [
+        // Prettier for auto-formatting
+        "esbenp.prettier-vscode",
+
+        // ESLint for linting JS/TS code
+        "dbaeumer.vscode-eslint"
+      ]
     }
   }
 }
