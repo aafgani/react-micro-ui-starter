@@ -4,13 +4,15 @@
     "dockerfile": "Dockerfile"
   },
   "forwardPorts": [5173],
+  "mounts": ["source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind"],
+  "remoteEnv": {
+    "GIT_SSH_COMMAND": "ssh -F /home/node/.ssh/config"
+  },
+  "remoteUser": "node",
   "postCreateCommand": "npm install",
   "customizations": {
     "vscode": {
-      "extensions": [
-        "esbenp.prettier-vscode",
-        "dbaeumer.vscode-eslint"
-      ]
+      "extensions": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
     }
   }
 }
