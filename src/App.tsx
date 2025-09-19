@@ -2,7 +2,14 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { Card, Hello, MyCounter, WindowWidth } from "./components/learn";
+import {
+  Card,
+  Hello,
+  MyCounter,
+  WindowWidth,
+  ComponentA,
+  ToDoList,
+} from "./components/learn";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -29,12 +36,15 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <ToDoList />
+      <br />
       <Card title="Profile">
         <p>This is inside the card.</p>
         <button>Click Me</button>
       </Card>
       <MyCounter />
       <WindowWidth />
+      <ComponentA />
     </>
   );
 }
