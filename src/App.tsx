@@ -9,6 +9,7 @@ import {
   WindowWidth,
   ComponentA,
   ToDoList,
+  MainApp,
 } from "./components/learn";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <MainApp />
       <ToDoList />
       <br />
       <Card title="Profile">
